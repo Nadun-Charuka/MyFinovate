@@ -40,6 +40,7 @@ final ThemeData lightTheme = ThemeData(
       neutralGrey: sharedNeutralGrey,
       lightBlue: sharedLightBlue,
       brightGreen: sharedBrightGreen,
+      brightOrange: Color.fromARGB(255, 252, 149, 58),
       skyBlue: sharedSkyBlue,
       brightPurple: sharedBrightPurple,
       aquaGreen: sharedAquaGreen,

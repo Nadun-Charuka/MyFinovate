@@ -13,7 +13,7 @@ class BarGraphData {
     required Color color4,
   }) : barGraphList = [
           BarGraphModel(
-            lable: "Calories Burned ",
+            lable: "Over roll Usage",
             color: color1,
             graph: [
               GraphModel(x: 0, y: 8),
@@ -25,7 +25,7 @@ class BarGraphData {
             ],
           ),
           BarGraphModel(
-            lable: "Protein",
+            lable: "Basic Savings Plan",
             color: color2,
             graph: [
               GraphModel(x: 0, y: 8),
@@ -37,27 +37,27 @@ class BarGraphData {
             ],
           ),
           BarGraphModel(
-            lable: "Carbs Intake",
+            lable: "Growth Savings Plan",
             color: color3,
             graph: [
-              GraphModel(x: 0, y: 7),
-              GraphModel(x: 1, y: 10),
-              GraphModel(x: 2, y: 7),
-              GraphModel(x: 3, y: 4),
-              GraphModel(x: 4, y: 4),
-              GraphModel(x: 5, y: 10),
+              GraphModel(x: 0, y: 1),
+              GraphModel(x: 1, y: 1),
+              GraphModel(x: 2, y: 3),
+              GraphModel(x: 3, y: 2),
+              GraphModel(x: 4, y: 5),
+              GraphModel(x: 5, y: 9),
             ],
           ),
           BarGraphModel(
-            lable: "Calories",
+            lable: "Advanced Portfolio Plan",
             color: color4,
             graph: [
-              GraphModel(x: 0, y: 6),
-              GraphModel(x: 1, y: 10),
-              GraphModel(x: 2, y: 3),
-              GraphModel(x: 3, y: 4),
-              GraphModel(x: 4, y: 9),
-              GraphModel(x: 5, y: 6),
+              GraphModel(x: 0, y: 0),
+              GraphModel(x: 1, y: 1),
+              GraphModel(x: 2, y: 1),
+              GraphModel(x: 3, y: 0),
+              GraphModel(x: 4, y: 0),
+              GraphModel(x: 5, y: 3),
             ],
           ),
         ];

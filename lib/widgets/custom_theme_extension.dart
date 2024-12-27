@@ -59,7 +59,7 @@ class CustomColors extends ThemeExtension<CustomColors> {
       neutralGrey: neutralGrey ?? this.neutralGrey,
       lightBlue: lightBlue ?? this.lightBlue,
       brightGreen: brightGreen ?? this.brightGreen,
-      brightOrange: brightOrange ?? this.brightOrange,
+      brightOrange: brightOrange ?? brightOrange,
       skyBlue: skyBlue ?? this.skyBlue,
       brightPurple: brightPurple ?? this.brightPurple,
       aquaGreen: aquaGreen ?? this.aquaGreen,

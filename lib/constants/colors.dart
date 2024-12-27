@@ -21,9 +21,9 @@ const Color sharedBrightOrange =
 const Color sharedSkyBlue = Color.fromARGB(255, 38, 165, 249); // Sky blue
 const Color sharedBrightPurple =
     Color.fromARGB(255, 174, 0, 255); // Bright purple
-const Color sharedAquaGreen = Color.fromARGB(255, 191, 253, 235); // Aqua green
+const Color sharedAquaGreen = Color.fromARGB(255, 5, 252, 120); // Aqua green
 const Color sharedYellowGreen =
-    Color.fromARGB(255, 234, 249, 185); // Yellow-green
+    Color.fromARGB(255, 243, 121, 8); // Yellow-green
 
 // Light Theme Colors
 Color lightCardBgColor = const Color(0xfff8f9fa); // Light card background
