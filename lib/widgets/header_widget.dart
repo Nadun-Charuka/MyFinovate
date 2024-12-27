@@ -1,4 +1,3 @@
-import 'package:fitness_tracker_v90/constants/colors.dart';
 import 'package:fitness_tracker_v90/utils/responsive.dart';
 import 'package:flutter/material.dart';
 
@@ -8,16 +7,17 @@ class HeaderWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final bool isDesktop = Responsive.isDesktop(context);
+
     return Row(
       children: [
-        //show the munu widget
+        // Show the menu widget
         if (!isDesktop)
           GestureDetector(
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: Icon(
                 Icons.menu,
-                color: greyColor,
+                color: Theme.of(context).iconTheme.color, // Dynamic icon color
               ),
             ),
             onTap: () {
@@ -26,10 +26,15 @@ class HeaderWidget extends StatelessWidget {
           ),
         Expanded(
           child: TextField(
-            style: TextStyle(color: greyColor),
+            style: TextStyle(
+                color: Theme.of(context)
+                    .textTheme
+                    .bodyMedium!
+                    .color), // Dynamic text color
             decoration: InputDecoration(
               filled: true,
-              fillColor: cardBgColor,
+              fillColor:
+                  Theme.of(context).cardColor, // Dynamic background color
               enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(10),
                 borderSide: const BorderSide(
@@ -39,17 +44,20 @@ class HeaderWidget extends StatelessWidget {
               focusedBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(10),
                 borderSide: BorderSide(
-                  color: Theme.of(context).primaryColor,
+                  color: Theme.of(context).primaryColor, // Dynamic border color
                 ),
               ),
               hintText: "Search",
-              hintStyle: TextStyle(color: greyColor),
-              prefixIcon: const Icon(Icons.search),
-              prefixIconColor: greyColor,
+              hintStyle: TextStyle(
+                  color: Theme.of(context).hintColor), // Dynamic hint color
+              prefixIcon: Icon(
+                Icons.search,
+                color: Theme.of(context).iconTheme.color, // Dynamic icon color
+              ),
             ),
           ),
         ),
-        //show the summary widget
+        // Show the summary widget
         if (!isDesktop)
           GestureDetector(
             child: Padding(

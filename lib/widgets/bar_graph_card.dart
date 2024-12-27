@@ -1,4 +1,3 @@
-import 'package:fitness_tracker_v90/constants/colors.dart';
 import 'package:fitness_tracker_v90/data/bar_graph_data.dart';
 import 'package:fitness_tracker_v90/models/graph_model.dart';
 import 'package:fitness_tracker_v90/utils/responsive.dart';
@@ -14,6 +13,7 @@ class BarGraphCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final isMobile = Responsive.isMobile(context);
     final barGraphData = BarGraphData();
+
     return GridView.builder(
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
@@ -37,11 +37,13 @@ class BarGraphCard extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.w400,
-                      color: greyColor,
+                      color: Theme.of(context)
+                          .textTheme
+                          .bodyMedium!
+                          .color, // Dynamic color
                     ),
                   ),
                 ),
-                //bargraph
                 const CustomSizedBox1(),
                 Expanded(
                   child: BarChart(
@@ -54,26 +56,23 @@ class BarGraphCard extends StatelessWidget {
                         border: const Border(),
                       ),
                       titlesData: FlTitlesData(
-                        //remove the left title
+                        // Remove left titles
                         leftTitles: const AxisTitles(
                           sideTitles: SideTitles(
                             showTitles: false,
                           ),
                         ),
-                        //remove the left title
                         rightTitles: const AxisTitles(
                           sideTitles: SideTitles(
                             showTitles: false,
                           ),
                         ),
-                        //remove the top title
                         topTitles: const AxisTitles(
                           sideTitles: SideTitles(
                             showTitles: false,
                           ),
                         ),
-
-                        //bottom titles
+                        // Bottom titles
                         bottomTitles: AxisTitles(
                           sideTitles: SideTitles(
                             showTitles: true,
@@ -84,7 +83,10 @@ class BarGraphCard extends StatelessWidget {
                                   barGraphData.label[value.toInt()],
                                   style: TextStyle(
                                     fontSize: 10,
-                                    color: greyColor,
+                                    color: Theme.of(context)
+                                        .textTheme
+                                        .bodySmall!
+                                        .color, // Dynamic color
                                     fontWeight: FontWeight.w500,
                                   ),
                                 ),
@@ -95,7 +97,7 @@ class BarGraphCard extends StatelessWidget {
                       ),
                     ),
                   ),
-                )
+                ),
               ],
             ),
           ),

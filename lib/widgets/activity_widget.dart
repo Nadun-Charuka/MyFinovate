@@ -1,4 +1,3 @@
-import 'package:fitness_tracker_v90/constants/colors.dart';
 import 'package:fitness_tracker_v90/data/health_activity_data.dart';
 import 'package:fitness_tracker_v90/utils/responsive.dart';
 import 'package:fitness_tracker_v90/widgets/custom_card.dart';
@@ -11,6 +10,7 @@ class ActivityWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final healthActivityData = HealthActivityData();
     final isMobile = Responsive.isMobile(context);
+
     return GridView.builder(
       itemCount: healthActivityData.healthActivityModelList.length,
       shrinkWrap: true,
@@ -36,14 +36,25 @@ class ActivityWidget extends StatelessWidget {
               ),
               Text(
                 healthActivityData.healthActivityModelList[index].value,
-                style: TextStyle(color: secondaryColor),
+                style: TextStyle(
+                  color: Theme.of(context)
+                      .textTheme
+                      .bodyLarge!
+                      .color, // Dynamic text color
+                ),
               ),
               const Spacer(
                 flex: 1,
               ),
               Text(
                 healthActivityData.healthActivityModelList[index].title,
-                style: TextStyle(color: greyColor, fontSize: 10),
+                style: TextStyle(
+                  color: Theme.of(context)
+                      .textTheme
+                      .bodyMedium!
+                      .color, // Dynamic secondary text color
+                  fontSize: 10,
+                ),
               ),
               const Spacer(
                 flex: 3,

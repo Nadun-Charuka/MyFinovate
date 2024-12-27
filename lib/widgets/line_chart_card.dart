@@ -1,4 +1,3 @@
-import 'package:fitness_tracker_v90/constants/colors.dart';
 import 'package:fitness_tracker_v90/data/line_chart_data.dart';
 import 'package:fitness_tracker_v90/widgets/custom_card.dart';
 import 'package:fitness_tracker_v90/widgets/custom_sized_box.dart';
@@ -11,15 +10,19 @@ class LineChartCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final lineData = LineData();
+
     return CustomCard(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            "Steps Overeview",
+            "Steps Overview",
             style: TextStyle(
               fontSize: 14,
-              color: greyColor,
+              color: Theme.of(context)
+                  .textTheme
+                  .bodyMedium!
+                  .color, // Dynamic text color
             ),
           ),
           const CustomSizedBox2(),
@@ -31,7 +34,7 @@ class LineChartCard extends StatelessWidget {
                   handleBuiltInTouches: true,
                 ),
                 titlesData: FlTitlesData(
-                  //bottomside titles
+                  // Bottom side titles
                   bottomTitles: AxisTitles(
                     sideTitles: SideTitles(
                       showTitles: true,
@@ -44,7 +47,10 @@ class LineChartCard extends StatelessWidget {
                                       .toString(),
                                   style: TextStyle(
                                     fontSize: 12,
-                                    color: greyColor,
+                                    color: Theme.of(context)
+                                        .textTheme
+                                        .bodySmall!
+                                        .color, // Dynamic text color
                                   ),
                                 ),
                               )
@@ -52,35 +58,38 @@ class LineChartCard extends StatelessWidget {
                       },
                     ),
                   ),
-
-                  //leftside titles
+                  // Left side titles
                   leftTitles: AxisTitles(
                     sideTitles: SideTitles(
-                        showTitles: true,
-                        interval: 1,
-                        reservedSize: 40,
-                        getTitlesWidget: (double value, TitleMeta meta) {
-                          return lineData.leftTitle[value.toInt()] != null
-                              ? Text(
-                                  lineData.leftTitle[value.toInt()].toString(),
-                                  style: TextStyle(
-                                    fontSize: 12,
-                                    color: greyColor,
-                                  ),
-                                )
-                              : const SizedBox();
-                        }),
+                      showTitles: true,
+                      interval: 1,
+                      reservedSize: 40,
+                      getTitlesWidget: (double value, TitleMeta meta) {
+                        return lineData.leftTitle[value.toInt()] != null
+                            ? Text(
+                                lineData.leftTitle[value.toInt()].toString(),
+                                style: TextStyle(
+                                  fontSize: 12,
+                                  color: Theme.of(context)
+                                      .textTheme
+                                      .bodySmall!
+                                      .color, // Dynamic text color
+                                ),
+                              )
+                            : const SizedBox();
+                      },
+                    ),
                   ),
                 ),
                 borderData: FlBorderData(show: false),
                 lineBarsData: [
                   LineChartBarData(
-                    color: sectionColor,
+                    color: Theme.of(context).primaryColor, // Dynamic line color
                     barWidth: 2.5,
                     belowBarData: BarAreaData(
                       gradient: LinearGradient(
                         colors: [
-                          sectionColor.withOpacity(.5),
+                          Theme.of(context).primaryColor.withOpacity(.5),
                           Colors.transparent
                         ],
                         begin: Alignment.topCenter,
@@ -100,7 +109,7 @@ class LineChartCard extends StatelessWidget {
                 maxY: 100,
               ),
             ),
-          )
+          ),
         ],
       ),
     );

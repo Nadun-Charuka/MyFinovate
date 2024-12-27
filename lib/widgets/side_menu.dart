@@ -1,4 +1,3 @@
-import 'package:fitness_tracker_v90/constants/colors.dart';
 import 'package:fitness_tracker_v90/data/side_menu_data.dart';
 import 'package:flutter/material.dart';
 
@@ -10,10 +9,10 @@ class SideMenu extends StatefulWidget {
 }
 
 class _SideMenuState extends State<SideMenu> {
-  //index tracker
+  // Index tracker
   int selectedIndex = 0;
 
-  //create an object of SideMenuData
+  // Create an object of SideMenuData
   final sideMenuData = SideMenuData();
 
   @override
@@ -21,21 +20,20 @@ class _SideMenuState extends State<SideMenu> {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 32),
       child: Container(
-        color: bgColor,
+        color: Theme.of(context)
+            .scaffoldBackgroundColor, // Dynamic background color
         child: ListView.builder(
           itemCount: sideMenuData.sideMenuList.length,
           itemBuilder: (context, index) {
-            // I switch from this method because adomic arts use another way
-            //access a current index of SideMenuItem in sideMenuList in sideMenuData object which create in the widget class
-            // SideMenuItem item = sideMenuData.sideMenuList[index];
-            return _sideMenuItemCard(sideMenuData, index);
+            return _sideMenuItemCard(context, sideMenuData, index);
           },
         ),
       ),
     );
   }
 
-  Widget _sideMenuItemCard(SideMenuData sideMenuData, index) {
+  Widget _sideMenuItemCard(
+      BuildContext context, SideMenuData sideMenuData, int index) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: GestureDetector(
@@ -47,7 +45,11 @@ class _SideMenuState extends State<SideMenu> {
         child: Container(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
-            color: (selectedIndex == index ? sectionColor : Colors.transparent),
+            color: selectedIndex == index
+                ? Theme.of(context)
+                    .primaryColor
+                    .withOpacity(0.2) // Dynamic selected background color
+                : Colors.transparent,
           ),
           child: Padding(
             padding: const EdgeInsets.all(8.0),
@@ -55,7 +57,12 @@ class _SideMenuState extends State<SideMenu> {
               children: [
                 Icon(
                   sideMenuData.sideMenuList[index].icon,
-                  color: (selectedIndex == index ? Colors.black : greyColor),
+                  color: selectedIndex == index
+                      ? Theme.of(context)
+                          .primaryColor // Dynamic selected icon color
+                      : Theme.of(context)
+                          .iconTheme
+                          .color, // Dynamic default icon color
                 ),
                 const SizedBox(
                   width: 10,
@@ -66,7 +73,13 @@ class _SideMenuState extends State<SideMenu> {
                     fontWeight: selectedIndex == index
                         ? FontWeight.w900
                         : FontWeight.w400,
-                    color: (selectedIndex == index ? Colors.black : greyColor),
+                    color: selectedIndex == index
+                        ? Theme.of(context)
+                            .primaryColor // Dynamic selected text color
+                        : Theme.of(context)
+                            .textTheme
+                            .bodyMedium!
+                            .color, // Dynamic default text color
                   ),
                 ),
               ],
