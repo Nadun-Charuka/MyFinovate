@@ -89,7 +89,7 @@ class LineChartCard extends StatelessWidget {
                     belowBarData: BarAreaData(
                       gradient: LinearGradient(
                         colors: [
-                          Theme.of(context).primaryColor.withOpacity(.5),
+                          Theme.of(context).primaryColor.withOpacity(.4),
                           Colors.transparent
                         ],
                         begin: Alignment.topCenter,

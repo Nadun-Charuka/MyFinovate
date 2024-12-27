@@ -3,6 +3,7 @@ import 'package:fitness_tracker_v90/models/graph_model.dart';
 import 'package:fitness_tracker_v90/utils/responsive.dart';
 import 'package:fitness_tracker_v90/widgets/custom_card.dart';
 import 'package:fitness_tracker_v90/widgets/custom_sized_box.dart';
+import 'package:fitness_tracker_v90/widgets/custom_theme_extension.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 
@@ -11,8 +12,15 @@ class BarGraphCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final customColors = Theme.of(context).extension<CustomColors>();
     final isMobile = Responsive.isMobile(context);
-    final barGraphData = BarGraphData();
+    final barGraphData = BarGraphData(
+      color1:
+          customColors?.skyBlue ?? Colors.blue, // Dynamic color with fallback
+      color2: customColors?.brightPurple ?? Colors.purple,
+      color3: customColors?.aquaGreen ?? Colors.teal,
+      color4: customColors?.yellowGreen ?? Colors.yellow,
+    );
 
     return GridView.builder(
       shrinkWrap: true,

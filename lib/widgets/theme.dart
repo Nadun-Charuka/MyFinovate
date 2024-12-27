@@ -1,4 +1,5 @@
 import 'package:fitness_tracker_v90/constants/colors.dart';
+import 'package:fitness_tracker_v90/widgets/custom_theme_extension.dart';
 import 'package:flutter/material.dart';
 
 // Light Theme
@@ -28,6 +29,23 @@ final ThemeData lightTheme = ThemeData(
       foregroundColor: lightSecondaryColor, // Replaces onPrimary
     ),
   ),
+  extensions: const [
+    CustomColors(
+      cardBackground: sharedCardBackground,
+      blue: sharedBlue,
+      white: sharedWhite,
+      darkBackground: sharedDarkBackground,
+      purpleAccent: sharedPurpleAccent,
+      limeGreen: sharedLimeGreen,
+      neutralGrey: sharedNeutralGrey,
+      lightBlue: sharedLightBlue,
+      brightGreen: sharedBrightGreen,
+      skyBlue: sharedSkyBlue,
+      brightPurple: sharedBrightPurple,
+      aquaGreen: sharedAquaGreen,
+      yellowGreen: sharedYellowGreen,
+    ),
+  ],
 );
 
 // Dark Theme
@@ -57,4 +75,21 @@ final ThemeData darkTheme = ThemeData(
       foregroundColor: darkSecondaryColor, // Replaces onPrimary
     ),
   ),
+  extensions: const [
+    CustomColors(
+      cardBackground: sharedCardBackground,
+      blue: sharedBlue,
+      white: sharedWhite,
+      darkBackground: sharedDarkBackground,
+      purpleAccent: sharedPurpleAccent,
+      limeGreen: sharedLimeGreen,
+      neutralGrey: sharedNeutralGrey,
+      lightBlue: sharedLightBlue,
+      brightGreen: sharedBrightGreen,
+      skyBlue: sharedSkyBlue,
+      brightPurple: sharedBrightPurple,
+      aquaGreen: sharedAquaGreen,
+      yellowGreen: sharedYellowGreen,
+    ),
+  ],
 );

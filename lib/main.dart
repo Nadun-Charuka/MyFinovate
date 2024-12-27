@@ -1,7 +1,9 @@
 import 'package:fitness_tracker_v90/provider/theme_notifier.dart';
 import 'package:fitness_tracker_v90/screens/home_page.dart';
+import 'package:fitness_tracker_v90/widgets/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+// Replace with your home page
 
 void main() {
   runApp(
@@ -20,10 +22,12 @@ class MyApp extends StatelessWidget {
     final themeNotifier = Provider.of<ThemeNotifier>(context);
 
     return MaterialApp(
+      title: 'Themed App',
       debugShowCheckedModeBanner: false,
-      title: "MyFinovate",
-      theme: themeNotifier.currentTheme,
-      home: const HomePage(),
+      theme: lightTheme, // Light theme
+      darkTheme: darkTheme, // Dark theme
+      themeMode: themeNotifier.currentThemeMode, // Dynamically set theme
+      home: const HomePage(), // Replace with your home widget
     );
   }
 }

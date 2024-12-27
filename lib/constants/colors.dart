@@ -1,12 +1,26 @@
 import 'package:flutter/material.dart';
 
-Color cardBgColor = const Color.fromARGB(255, 24, 24, 24);
-Color primaryColor = const Color(0xff2697ff);
-Color secondaryColor = const Color(0xffffffff);
-Color bgColor = const Color.fromARGB(255, 30, 29, 29);
-Color sectionColor = Colors.purpleAccent;
-Color limeColor = const Color.fromARGB(255, 28, 42, 50);
-Color greyColor = Colors.grey;
+// Shared Colors (Same for Light and Dark Themes)
+const Color sharedCardBackground =
+    Color.fromARGB(255, 24, 24, 24); // Card background
+const Color sharedBlue = Color(0xff2697ff); // Blue
+const Color sharedWhite = Color(0xffffffff); // White
+const Color sharedDarkBackground =
+    Color.fromARGB(255, 30, 29, 29); // Dark background
+const Color sharedPurpleAccent =
+    Colors.purpleAccent; // Purple accent for sections
+const Color sharedLimeGreen =
+    Color.fromARGB(255, 28, 42, 50); // Lime green color
+const Color sharedNeutralGrey = Colors.grey; // Neutral grey
+const Color sharedLightBlue = Color(0xff26e5ff); // Light blue
+const Color sharedBrightGreen =
+    Color.fromARGB(255, 42, 255, 38); // Bright green
+const Color sharedSkyBlue = Color.fromARGB(255, 38, 165, 249); // Sky blue
+const Color sharedBrightPurple =
+    Color.fromARGB(255, 174, 0, 255); // Bright purple
+const Color sharedAquaGreen = Color.fromARGB(255, 3, 247, 178); // Aqua green
+const Color sharedYellowGreen =
+    Color.fromARGB(255, 190, 247, 3); // Yellow-green
 
 // Light Theme Colors
 Color lightCardBgColor = const Color(0xfff8f9fa); // Light card background
