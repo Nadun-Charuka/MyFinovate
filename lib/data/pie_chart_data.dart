@@ -5,34 +5,30 @@ class PieChartSampleData {
   final List<PieChartSectionData> pieChartSectionData;
 
   PieChartSampleData({
+    required double year1Percentage,
+    required double year3Percentage,
+    required double year10Percentage,
     required Color color1,
     required Color color2,
     required Color color3,
-    required Color color4,
   }) : pieChartSectionData = [
           PieChartSectionData(
             color: color1,
-            value: 30,
-            showTitle: false,
+            value: year1Percentage,
             radius: 14,
+            title: '${year1Percentage.toStringAsFixed(1)}%',
           ),
           PieChartSectionData(
             color: color2,
-            value: 25,
-            showTitle: false,
+            value: year3Percentage,
             radius: 12,
+            title: '${year3Percentage.toStringAsFixed(1)}%',
           ),
           PieChartSectionData(
             color: color3,
-            value: 20,
-            showTitle: false,
+            value: year10Percentage,
             radius: 10,
-          ),
-          PieChartSectionData(
-            color: color4,
-            value: 10,
-            showTitle: false,
-            radius: 8,
+            title: '${year10Percentage.toStringAsFixed(1)}%',
           ),
         ];
 }

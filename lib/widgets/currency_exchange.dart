@@ -127,7 +127,7 @@ class CurrencyExchange extends StatelessWidget {
             style: TextStyle(
               fontSize: 24,
               fontWeight: FontWeight.bold,
-              color: Theme.of(context).primaryColor,
+              color: Theme.of(context).textTheme.bodyMedium!.color,
             ),
           ),
           Text(
@@ -164,7 +164,7 @@ class CurrencyExchange extends StatelessWidget {
           style: TextStyle(
             fontSize: 18,
             fontWeight: FontWeight.bold,
-            color: Theme.of(context).primaryColor,
+            color: Theme.of(context).textTheme.bodyMedium!.color,
           ),
           textAlign: TextAlign.center,
         ),

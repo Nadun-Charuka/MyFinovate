@@ -5,22 +5,25 @@ const Color sharedCardBackground =
     Color.fromARGB(255, 24, 24, 24); // Card background
 const Color sharedBlue = Color(0xff2697ff); // Blue
 const Color sharedWhite = Color(0xffffffff); // White
+// White
 const Color sharedDarkBackground =
     Color.fromARGB(255, 30, 29, 29); // Dark background
 const Color sharedPurpleAccent =
-    Colors.purpleAccent; // Purple accent for sections
+    Color.fromARGB(255, 241, 210, 247); // Purple accent for sections
 const Color sharedLimeGreen =
     Color.fromARGB(255, 28, 42, 50); // Lime green color
 const Color sharedNeutralGrey = Colors.grey; // Neutral grey
 const Color sharedLightBlue = Color(0xff26e5ff); // Light blue
 const Color sharedBrightGreen =
     Color.fromARGB(255, 42, 255, 38); // Bright green
+const Color sharedBrightOrange =
+    Color.fromARGB(255, 251, 164, 24); // Bright orange
 const Color sharedSkyBlue = Color.fromARGB(255, 38, 165, 249); // Sky blue
 const Color sharedBrightPurple =
     Color.fromARGB(255, 174, 0, 255); // Bright purple
-const Color sharedAquaGreen = Color.fromARGB(255, 3, 247, 178); // Aqua green
+const Color sharedAquaGreen = Color.fromARGB(255, 191, 253, 235); // Aqua green
 const Color sharedYellowGreen =
-    Color.fromARGB(255, 190, 247, 3); // Yellow-green
+    Color.fromARGB(255, 234, 249, 185); // Yellow-green
 
 // Light Theme Colors
 Color lightCardBgColor = const Color(0xfff8f9fa); // Light card background

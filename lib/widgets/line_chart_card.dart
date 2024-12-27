@@ -16,9 +16,9 @@ class LineChartCard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            "Steps Overview",
+            "Your investment through the year",
             style: TextStyle(
-              fontSize: 14,
+              fontSize: 18,
               color: Theme.of(context)
                   .textTheme
                   .bodyMedium!

@@ -14,8 +14,10 @@ class CustomColors extends ThemeExtension<CustomColors> {
   final Color? brightPurple;
   final Color? aquaGreen;
   final Color? yellowGreen;
+  final Color? brightOrange;
 
   const CustomColors({
+    this.brightOrange,
     this.cardBackground,
     this.blue,
     this.white,
@@ -57,6 +59,7 @@ class CustomColors extends ThemeExtension<CustomColors> {
       neutralGrey: neutralGrey ?? this.neutralGrey,
       lightBlue: lightBlue ?? this.lightBlue,
       brightGreen: brightGreen ?? this.brightGreen,
+      brightOrange: brightOrange ?? this.brightOrange,
       skyBlue: skyBlue ?? this.skyBlue,
       brightPurple: brightPurple ?? this.brightPurple,
       aquaGreen: aquaGreen ?? this.aquaGreen,

@@ -1,20 +1,32 @@
 import 'package:fitness_tracker_v90/data/pie_chart_data.dart';
 import 'package:fitness_tracker_v90/widgets/custom_sized_box.dart';
-import 'package:fitness_tracker_v90/widgets/custom_theme_extension.dart';
-import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
+import 'package:fl_chart/fl_chart.dart';
+import 'custom_theme_extension.dart';
 
 class PieChartCard extends StatelessWidget {
-  const PieChartCard({super.key});
+  final double year1Percentage;
+  final double year3Percentage;
+  final double year10Percentage;
+
+  const PieChartCard({
+    super.key,
+    required this.year1Percentage,
+    required this.year3Percentage,
+    required this.year10Percentage,
+  });
 
   @override
   Widget build(BuildContext context) {
     final customColors = Theme.of(context).extension<CustomColors>();
+
     final pieChartData = PieChartSampleData(
-      color1: customColors?.blue ?? Colors.blue, // Fallback color
+      year1Percentage: year1Percentage,
+      year3Percentage: year3Percentage,
+      year10Percentage: year10Percentage,
+      color1: customColors?.blue ?? Colors.blue,
       color2: customColors?.lightBlue ?? Colors.lightBlue,
       color3: customColors?.brightGreen ?? Colors.green,
-      color4: customColors?.aquaGreen ?? Colors.teal,
     );
 
     return SizedBox(
@@ -23,8 +35,8 @@ class PieChartCard extends StatelessWidget {
         children: [
           PieChart(
             PieChartData(
-              sectionsSpace: 0,
-              centerSpaceRadius: 70,
+              sectionsSpace: 2,
+              centerSpaceRadius: 90,
               startDegreeOffset: -90,
               sections:
                   pieChartData.pieChartSectionData, // Data remains unchanged
@@ -36,7 +48,7 @@ class PieChartCard extends StatelessWidget {
               children: [
                 const CustomSizedBox1(),
                 Text(
-                  "70%", // Main statistic
+                  "    Total \n\ninvestment", // Main statistic
                   style: TextStyle(
                     color: Theme.of(context)
                         .textTheme
@@ -49,7 +61,7 @@ class PieChartCard extends StatelessWidget {
                 ),
                 const CustomSizedBox1(),
                 Text(
-                  "of 100%", // Supporting text
+                  "LKR - 156,322", // Supporting text
                   style: TextStyle(
                     color: Theme.of(context)
                         .textTheme

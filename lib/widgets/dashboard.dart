@@ -3,6 +3,7 @@ import 'package:fitness_tracker_v90/widgets/bar_graph_card.dart';
 import 'package:fitness_tracker_v90/widgets/currency_exchange.dart';
 import 'package:fitness_tracker_v90/widgets/custom_sized_box.dart';
 import 'package:fitness_tracker_v90/widgets/header_widget.dart';
+import 'package:fitness_tracker_v90/widgets/investment_plan_card.dart';
 import 'package:fitness_tracker_v90/widgets/line_chart_card.dart';
 import 'package:flutter/material.dart';
 
@@ -24,11 +25,13 @@ class _DashboardState extends State<Dashboard> {
             CustomSizedBox1(),
             HeaderWidget(),
             CustomSizedBox1(),
-            CurrencyExchange(),
             ActivityWidget(),
             CustomSizedBox1(),
+            CurrencyExchange(),
             LineChartCard(),
             CustomSizedBox1(),
+            InvestmentPlanCards(),
+            CustomSizedBox2(),
             BarGraphCard(),
             CustomSizedBox2(),
           ],
