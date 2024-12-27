@@ -7,17 +7,17 @@ class SideMenuData {
       icon: Icons.home,
       title: "Dashboard",
     ),
-    SideMenuItem(
-      icon: Icons.currency_exchange,
-      title: "Currency Exchange",
-    ),
+    // SideMenuItem(
+    //   icon: Icons.currency_exchange,
+    //   title: "Currency Exchange",
+    // ),
     SideMenuItem(
       icon: Icons.inventory,
       title: "Investments",
     ),
     SideMenuItem(
       icon: Icons.person_3,
-      title: "Client Data",
+      title: "Customer Service",
     ),
     SideMenuItem(
       icon: Icons.settings,

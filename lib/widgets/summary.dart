@@ -50,7 +50,7 @@ class _SummaryState extends State<Summary> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   const Text(
-                    "Enable Dark Theme",
+                    "Dark Theme",
                     style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
                   ),
                   Switch(
