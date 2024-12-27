@@ -11,6 +11,12 @@ class ActivityWidget extends StatelessWidget {
     final healthActivityData = HealthActivityData();
     final isMobile = Responsive.isMobile(context);
 
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      // Force evaluation of Theme.of(context) after build
+      Theme.of(context).textTheme.bodyLarge;
+      Theme.of(context).textTheme.bodyMedium;
+    });
+
     return GridView.builder(
       itemCount: healthActivityData.healthActivityModelList.length,
       shrinkWrap: true,
@@ -24,41 +30,27 @@ class ActivityWidget extends StatelessWidget {
         return CustomCard(
           child: Column(
             children: [
-              const Spacer(
-                flex: 3,
-              ),
+              const Spacer(flex: 3),
               Image.asset(
                 healthActivityData.healthActivityModelList[index].icon,
                 width: 50,
               ),
-              const Spacer(
-                flex: 1,
-              ),
+              const Spacer(flex: 1),
               Text(
                 healthActivityData.healthActivityModelList[index].value,
                 style: TextStyle(
-                  color: Theme.of(context)
-                      .textTheme
-                      .bodyLarge!
-                      .color, // Dynamic text color
+                  color: Theme.of(context).textTheme.bodyLarge!.color,
                 ),
               ),
-              const Spacer(
-                flex: 1,
-              ),
+              const Spacer(flex: 1),
               Text(
                 healthActivityData.healthActivityModelList[index].title,
                 style: TextStyle(
-                  color: Theme.of(context)
-                      .textTheme
-                      .bodyMedium!
-                      .color, // Dynamic secondary text color
+                  color: Theme.of(context).textTheme.bodyMedium!.color,
                   fontSize: 10,
                 ),
               ),
-              const Spacer(
-                flex: 3,
-              ),
+              const Spacer(flex: 3),
             ],
           ),
         );
