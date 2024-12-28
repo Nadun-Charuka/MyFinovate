@@ -5,15 +5,19 @@ class SideMenuData {
   List<SideMenuItem> sideMenuList = [
     SideMenuItem(
       icon: Icons.home,
-      title: "Dashboard",
+      title: "Home",
+    ),
+    SideMenuItem(
+      icon: Icons.currency_exchange,
+      title: "Currency Exchange",
     ),
     SideMenuItem(
       icon: Icons.inventory,
       title: "Investments Plan",
     ),
     SideMenuItem(
-      icon: Icons.currency_exchange,
-      title: "Currency Exchange",
+      icon: Icons.dashboard,
+      title: "Dashboard",
     ),
     SideMenuItem(
       icon: Icons.support_agent,

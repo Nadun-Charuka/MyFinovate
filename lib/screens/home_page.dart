@@ -4,8 +4,37 @@ import 'package:fitness_tracker_v90/widgets/dashboard.dart';
 import 'package:fitness_tracker_v90/widgets/side_menu.dart';
 import 'package:fitness_tracker_v90/widgets/summary.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  final ScrollController _scrollController = ScrollController();
+  final GlobalKey<DashboardState> _dashboardKey = GlobalKey();
+
+  void _onMenuTap(int index) {
+    switch (index) {
+      case 0:
+        _dashboardKey.currentState
+            ?.scrollToSection(_dashboardKey.currentState!.activityKey);
+        break;
+      case 1:
+        _dashboardKey.currentState
+            ?.scrollToSection(_dashboardKey.currentState!.currencyKey);
+        break;
+      case 2:
+        _dashboardKey.currentState
+            ?.scrollToSection(_dashboardKey.currentState!.investmentKey);
+        break;
+      case 3:
+        _dashboardKey.currentState
+            ?.scrollToSection(_dashboardKey.currentState!.lineChartKey);
+        break;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +45,7 @@ class HomePage extends StatelessWidget {
         drawer: !isDesktop
             ? SizedBox(
                 width: MediaQuery.of(context).size.width * 0.8,
-                child: const SideMenu(),
+                child: SideMenu(onMenuTap: _onMenuTap),
               )
             : null,
         endDrawer: !isDesktop
@@ -26,36 +55,26 @@ class HomePage extends StatelessWidget {
               )
             : null,
         body: SafeArea(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 16),
-            child: Row(
-              children: [
-                //Side Menu
-                if (isDesktop)
-                  const Expanded(
-                    flex: 2,
-                    child: SizedBox(
-                      child: SideMenu(),
-                    ),
-                  ),
-
-                //DashBoard
-                const Expanded(
-                  flex: 7,
-                  child: SizedBox(
-                    child: Dashboard(),
-                  ),
+          child: Row(
+            children: [
+              if (isDesktop)
+                Expanded(
+                  flex: 2,
+                  child: SideMenu(onMenuTap: _onMenuTap),
                 ),
-                //Summary
-                if (isDesktop)
-                  const Expanded(
-                    flex: 2,
-                    child: SizedBox(
-                      child: Summary(),
-                    ),
-                  ),
-              ],
-            ),
+              Expanded(
+                flex: 7,
+                child: Dashboard(
+                  key: _dashboardKey,
+                  scrollController: _scrollController,
+                ),
+              ),
+              if (isDesktop)
+                const Expanded(
+                  flex: 2,
+                  child: Summary(),
+                ),
+            ],
           ),
         ),
       ),

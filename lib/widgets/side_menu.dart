@@ -2,7 +2,9 @@ import 'package:fitness_tracker_v90/data/side_menu_data.dart';
 import 'package:flutter/material.dart';
 
 class SideMenu extends StatefulWidget {
-  const SideMenu({super.key});
+  final Function(int) onMenuTap;
+
+  const SideMenu({super.key, required this.onMenuTap});
 
   @override
   State<SideMenu> createState() => _SideMenuState();
@@ -41,6 +43,7 @@ class _SideMenuState extends State<SideMenu> {
           setState(() {
             selectedIndex = index;
           });
+          widget.onMenuTap(index); // Trigger navigation callback
         },
         child: Container(
           decoration: BoxDecoration(
