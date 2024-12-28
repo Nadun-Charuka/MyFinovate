@@ -22,95 +22,110 @@ class BarGraphCard extends StatelessWidget {
       color4: customColors?.yellowGreen ?? Colors.yellow,
     );
 
-    return GridView.builder(
-      shrinkWrap: true,
-      physics: const NeverScrollableScrollPhysics(),
-      itemCount: barGraphData.barGraphList.length,
-      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: isMobile ? 2 : 4,
-        mainAxisSpacing: 16,
-        crossAxisSpacing: 16,
-        childAspectRatio: 5 / 4,
-      ),
-      itemBuilder: (context, index) {
-        return Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: CustomCard(
-            child: Column(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text(
-                    barGraphData.barGraphList[index].lable,
-                    style: TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w400,
-                      color: Theme.of(context)
-                          .textTheme
-                          .bodyMedium!
-                          .color, // Dynamic color
-                    ),
-                  ),
+    return Column(
+      children: [
+        Align(
+          alignment: Alignment.centerLeft,
+          child: Text(
+            "Daily investment",
+            style: Theme.of(context).textTheme.headlineSmall!.copyWith(
+                  fontWeight: FontWeight.bold,
+                  color: Theme.of(context).primaryColor,
                 ),
-                const CustomSizedBox1(),
-                Expanded(
-                  child: BarChart(
-                    BarChartData(
-                      barGroups: _chartGroups(
-                        color: barGraphData.barGraphList[index].color,
-                        points: barGraphData.barGraphList[index].graph,
-                      ),
-                      borderData: FlBorderData(
-                        border: const Border(),
-                      ),
-                      titlesData: FlTitlesData(
-                        // Remove left titles
-                        leftTitles: const AxisTitles(
-                          sideTitles: SideTitles(
-                            showTitles: false,
-                          ),
-                        ),
-                        rightTitles: const AxisTitles(
-                          sideTitles: SideTitles(
-                            showTitles: false,
-                          ),
-                        ),
-                        topTitles: const AxisTitles(
-                          sideTitles: SideTitles(
-                            showTitles: false,
-                          ),
-                        ),
-                        // Bottom titles
-                        bottomTitles: AxisTitles(
-                          sideTitles: SideTitles(
-                            showTitles: true,
-                            getTitlesWidget: (double value, TitleMeta meta) {
-                              return Padding(
-                                padding: const EdgeInsets.only(top: 5),
-                                child: Text(
-                                  barGraphData.label[value.toInt()],
-                                  style: TextStyle(
-                                    fontSize: 10,
-                                    color: Theme.of(context)
-                                        .textTheme
-                                        .bodySmall!
-                                        .color, // Dynamic color
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                                ),
-                              );
-                            },
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            ),
           ),
-        );
-      },
+        ),
+        GridView.builder(
+          shrinkWrap: true,
+          physics: const NeverScrollableScrollPhysics(),
+          itemCount: barGraphData.barGraphList.length,
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: isMobile ? 2 : 4,
+            mainAxisSpacing: 16,
+            crossAxisSpacing: 16,
+            childAspectRatio: 5 / 4,
+          ),
+          itemBuilder: (context, index) {
+            return Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: CustomCard(
+                child: Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                        barGraphData.barGraphList[index].lable,
+                        style: TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w400,
+                          color: Theme.of(context)
+                              .textTheme
+                              .bodyMedium!
+                              .color, // Dynamic color
+                        ),
+                      ),
+                    ),
+                    const CustomSizedBox1(),
+                    Expanded(
+                      child: BarChart(
+                        BarChartData(
+                          barGroups: _chartGroups(
+                            color: barGraphData.barGraphList[index].color,
+                            points: barGraphData.barGraphList[index].graph,
+                          ),
+                          borderData: FlBorderData(
+                            border: const Border(),
+                          ),
+                          titlesData: FlTitlesData(
+                            // Remove left titles
+                            leftTitles: const AxisTitles(
+                              sideTitles: SideTitles(
+                                showTitles: false,
+                              ),
+                            ),
+                            rightTitles: const AxisTitles(
+                              sideTitles: SideTitles(
+                                showTitles: false,
+                              ),
+                            ),
+                            topTitles: const AxisTitles(
+                              sideTitles: SideTitles(
+                                showTitles: false,
+                              ),
+                            ),
+                            // Bottom titles
+                            bottomTitles: AxisTitles(
+                              sideTitles: SideTitles(
+                                showTitles: true,
+                                getTitlesWidget:
+                                    (double value, TitleMeta meta) {
+                                  return Padding(
+                                    padding: const EdgeInsets.only(top: 5),
+                                    child: Text(
+                                      barGraphData.label[value.toInt()],
+                                      style: TextStyle(
+                                        fontSize: 10,
+                                        color: Theme.of(context)
+                                            .textTheme
+                                            .bodySmall!
+                                            .color, // Dynamic color
+                                        fontWeight: FontWeight.w500,
+                                      ),
+                                    ),
+                                  );
+                                },
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            );
+          },
+        ),
+      ],
     );
   }
 

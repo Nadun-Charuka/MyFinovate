@@ -5,6 +5,7 @@ import 'package:fitness_tracker_v90/widgets/investmen.dart';
 import 'package:fitness_tracker_v90/widgets/pie_chart.dart';
 import 'package:fitness_tracker_v90/widgets/schedule_widget.dart';
 import 'package:fitness_tracker_v90/widgets/summary_details.dart';
+import 'package:fitness_tracker_v90/widgets/user_profile.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -50,6 +51,18 @@ class _SummaryState extends State<Summary> {
                     ),
                   ],
                 ),
+
+                const AdvancedUserDataWidget(
+                  name: "John Doe",
+                  company: "MyFinovate Inc.",
+                  email: "johndoe@example.com",
+                  imageAsset:
+                      "assets/images/image.jpg", // Replace with a valid asset path
+                  currentPlan: "Growth Savings Plan",
+                  dob: "15 April 1990",
+                  contact: "+44 123 456 7890",
+                ),
+
                 Text(
                   "Interest Rates",
                   style: TextStyle(
@@ -107,6 +120,18 @@ class _SummaryState extends State<Summary> {
                 ),
 
                 const CustomSizedBox2(),
+                const CustomSizedBox2(),
+                Text(
+                  "Notifications",
+                  style: TextStyle(
+                    color: Theme.of(context)
+                        .textTheme
+                        .bodyMedium!
+                        .color, // Dynamic color
+                    fontSize: 16,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
                 const ScheduleWidget(),
                 const SizedBox(height: 16),
               ],
