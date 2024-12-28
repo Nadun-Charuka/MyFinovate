@@ -1,4 +1,4 @@
-# fitness_tracker_v90
+# MyFinovate app
 
 A new Flutter project.
 
