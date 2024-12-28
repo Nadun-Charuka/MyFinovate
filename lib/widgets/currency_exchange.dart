@@ -1,7 +1,15 @@
 import 'package:flutter/material.dart';
 
-class CurrencyExchange extends StatelessWidget {
+class CurrencyExchange extends StatefulWidget {
   const CurrencyExchange({super.key});
+
+  @override
+  State<CurrencyExchange> createState() => _CurrencyExchangeState();
+}
+
+class _CurrencyExchangeState extends State<CurrencyExchange> {
+  final TextEditingController _amountController = TextEditingController();
+  double? _convertedAmount;
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +33,6 @@ class CurrencyExchange extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 16),
-              // Input section
               isMobile
                   ? _buildVerticalLayout(context)
                   : _buildHorizontalLayout(context),
@@ -40,7 +47,8 @@ class CurrencyExchange extends StatelessWidget {
   Widget _buildVerticalLayout(BuildContext context) {
     return Column(
       children: [
-        _buildInputCard(context, "Enter Amount...", "Min 250 - Max 10,000"),
+        _buildInputCard(context, "Enter Amount...",
+            "    Min 250 - Max 10,000\nCompany Deduction - 3%"),
         const SizedBox(height: 16),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -76,7 +84,10 @@ class CurrencyExchange extends StatelessWidget {
         Expanded(
           flex: 2,
           child: _buildInputCard(
-              context, "Enter Amount...", "Min 250 - Max 10,000"),
+            context,
+            "Enter Amount...",
+            "    Min 250 - Max 10,000\nCompany Deduction - 3%",
+          ),
         ),
         Expanded(
           flex: 1,
@@ -109,10 +120,11 @@ class CurrencyExchange extends StatelessWidget {
     );
   }
 
-  // Input Card
+  // Input Card with User Interaction
   Widget _buildInputCard(BuildContext context, String title, String subtitle) {
     return Container(
-      height: 150,
+      width: double.infinity,
+      height: 200,
       padding: const EdgeInsets.all(16.0),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
@@ -120,29 +132,30 @@ class CurrencyExchange extends StatelessWidget {
       ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            title,
-            style: TextStyle(
-              fontSize: 24,
-              fontWeight: FontWeight.bold,
-              color: Theme.of(context).textTheme.bodyMedium!.color,
+          TextField(
+            controller: _amountController,
+            keyboardType: TextInputType.number,
+            decoration: InputDecoration(
+              labelText: title,
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(10),
+              ),
+              filled: true,
+              fillColor: Theme.of(context).primaryColor.withOpacity(0.2),
             ),
           ),
+          const SizedBox(height: 8),
           Text(
             subtitle,
-            style: TextStyle(
-              fontSize: 16,
-              color: Theme.of(context).textTheme.bodyMedium!.color,
-            ),
-          ),
-          Text(
-            "Company Deduction - 3%",
             style: TextStyle(
               fontSize: 14,
               color: Theme.of(context).textTheme.bodyMedium!.color,
             ),
+          ),
+          ElevatedButton(
+            onPressed: _convertCurrency,
+            child: const Text("Convert"),
           ),
         ],
       ),
@@ -160,7 +173,9 @@ class CurrencyExchange extends StatelessWidget {
       ),
       child: Center(
         child: Text(
-          "Converted Amount: \$XXXX",
+          _convertedAmount != null
+              ? "Converted Amount: \$${_convertedAmount!.toStringAsFixed(2)}"
+              : "Enter amount to see conversion",
           style: TextStyle(
             fontSize: 18,
             fontWeight: FontWeight.bold,
@@ -170,5 +185,22 @@ class CurrencyExchange extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  // Conversion Logic
+  void _convertCurrency() {
+    final amount = double.tryParse(_amountController.text);
+
+    if (amount != null && amount >= 250 && amount <= 10000) {
+      setState(() {
+        _convertedAmount = amount * 0.003; // Example conversion rate
+      });
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text("Please enter a valid amount (250-10,000)."),
+        ),
+      );
+    }
   }
 }

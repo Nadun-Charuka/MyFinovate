@@ -1,6 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <application
-        android:label="fitness_tracker_v90"
+        android:label="MyFinovate"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

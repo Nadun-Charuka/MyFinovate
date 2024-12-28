@@ -7,21 +7,25 @@ class SideMenuData {
       icon: Icons.home,
       title: "Dashboard",
     ),
-    // SideMenuItem(
-    //   icon: Icons.currency_exchange,
-    //   title: "Currency Exchange",
-    // ),
     SideMenuItem(
       icon: Icons.inventory,
-      title: "Investments",
+      title: "Investments Plan",
     ),
     SideMenuItem(
-      icon: Icons.person_3,
+      icon: Icons.currency_exchange,
+      title: "Currency Exchange",
+    ),
+    SideMenuItem(
+      icon: Icons.support_agent,
       title: "Customer Service",
     ),
     SideMenuItem(
       icon: Icons.settings,
       title: "Settings ",
+    ),
+    SideMenuItem(
+      icon: Icons.person,
+      title: "Profile",
     ),
     SideMenuItem(
       icon: Icons.logout,

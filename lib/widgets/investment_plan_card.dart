@@ -1,3 +1,4 @@
+import 'package:fitness_tracker_v90/widgets/custom_sized_box.dart';
 import 'package:fitness_tracker_v90/widgets/custom_theme_extension.dart';
 import 'package:flutter/material.dart';
 
@@ -49,98 +50,113 @@ class InvestmentPlanCards extends StatelessWidget {
 
     return Padding(
       padding: const EdgeInsets.all(16.0),
-      child: ListView.builder(
-        physics: const NeverScrollableScrollPhysics(),
-        itemCount: plans.length,
-        shrinkWrap: true,
-        itemBuilder: (context, index) {
-          final plan = plans[index];
-          return Card(
-            margin: const EdgeInsets.only(bottom: 16),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(15),
+      child: Column(
+        children: [
+          Align(
+            alignment: Alignment.centerLeft,
+            child: Text(
+              "Investment Plans",
+              style: Theme.of(context).textTheme.headlineSmall!.copyWith(
+                    fontWeight: FontWeight.bold,
+                    color: Theme.of(context).primaryColor,
+                  ),
             ),
-            elevation: 5,
-            color: plan["backgroundColor"] as Color,
-            child: Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  // Plan Title
-                  Row(
+          ),
+          const CustomSizedBox1(),
+          ListView.builder(
+            physics: const NeverScrollableScrollPhysics(),
+            itemCount: plans.length,
+            shrinkWrap: true,
+            itemBuilder: (context, index) {
+              final plan = plans[index];
+              return Card(
+                margin: const EdgeInsets.only(bottom: 16),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(15),
+                ),
+                elevation: 5,
+                color: plan["backgroundColor"] as Color,
+                child: Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Icon(
-                        plan["icon"] as IconData,
-                        size: 40,
-                        color: plan["titleColor"] as Color,
+                      // Plan Title
+                      Row(
+                        children: [
+                          Icon(
+                            plan["icon"] as IconData,
+                            size: 40,
+                            color: plan["titleColor"] as Color,
+                          ),
+                          const SizedBox(width: 16),
+                          Text(
+                            plan["name"] as String,
+                            style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                              color: plan["titleColor"] as Color,
+                            ),
+                          ),
+                        ],
                       ),
-                      const SizedBox(width: 16),
-                      Text(
-                        plan["name"] as String,
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                          color: plan["titleColor"] as Color,
+                      const SizedBox(height: 16),
+
+                      // Plan Details
+                      _buildPlanDetail(
+                        context,
+                        "Max Investment: ",
+                        plan["maxInvestment"] as String,
+                        plan["detailColor"] as Color,
+                      ),
+                      _buildPlanDetail(
+                        context,
+                        "Monthly Minimum: ",
+                        plan["monthlyMinimum"] as String,
+                        plan["detailColor"] as Color,
+                      ),
+                      _buildPlanDetail(
+                        context,
+                        "Returns: ",
+                        plan["returns"] as String,
+                        plan["detailColor"] as Color,
+                      ),
+                      _buildPlanDetail(
+                        context,
+                        "Tax & Fees: ",
+                        plan["taxFees"] as String,
+                        plan["detailColor"] as Color,
+                      ),
+
+                      const SizedBox(height: 16),
+
+                      // Explore Button
+                      Align(
+                        alignment: Alignment.centerRight,
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.white,
+                            foregroundColor: plan["buttonColor"] as Color,
+                          ),
+                          onPressed: () {
+                            // Add navigation or further action
+                          },
+                          child: Text(
+                            "Explore",
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: plan["buttonColor"] as Color,
+                            ),
+                          ),
                         ),
                       ),
                     ],
                   ),
-                  const SizedBox(height: 16),
-
-                  // Plan Details
-                  _buildPlanDetail(
-                    context,
-                    "Max Investment: ",
-                    plan["maxInvestment"] as String,
-                    plan["detailColor"] as Color,
-                  ),
-                  _buildPlanDetail(
-                    context,
-                    "Monthly Minimum: ",
-                    plan["monthlyMinimum"] as String,
-                    plan["detailColor"] as Color,
-                  ),
-                  _buildPlanDetail(
-                    context,
-                    "Returns: ",
-                    plan["returns"] as String,
-                    plan["detailColor"] as Color,
-                  ),
-                  _buildPlanDetail(
-                    context,
-                    "Tax & Fees: ",
-                    plan["taxFees"] as String,
-                    plan["detailColor"] as Color,
-                  ),
-
-                  const SizedBox(height: 16),
-
-                  // Explore Button
-                  Align(
-                    alignment: Alignment.centerRight,
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.white,
-                        foregroundColor: plan["buttonColor"] as Color,
-                      ),
-                      onPressed: () {
-                        // Add navigation or further action
-                      },
-                      child: Text(
-                        "Explore",
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: plan["buttonColor"] as Color,
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          );
-        },
+                ),
+              );
+            },
+          ),
+        ],
       ),
     );
   }

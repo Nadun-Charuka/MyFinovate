@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
     final themeNotifier = Provider.of<ThemeNotifier>(context);
 
     return MaterialApp(
-      title: 'Themed App',
+      title: 'MyFinovate',
       debugShowCheckedModeBanner: false,
       theme: lightTheme, // Light theme
       darkTheme: darkTheme, // Dark theme
