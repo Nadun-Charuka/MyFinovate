@@ -49,6 +49,8 @@ class InvestmentCalculator extends StatelessWidget {
           const SizedBox(height: 8),
           _buildDropdown(
               context, "Investment Type", ["Basic", "Growth", "Advanced"]),
+          const SizedBox(height: 8),
+          _buildSubmitButton(context),
         ],
       ),
     );
@@ -132,6 +134,32 @@ class InvestmentCalculator extends StatelessWidget {
           },
         ),
       ],
+    );
+  }
+
+  Widget _buildSubmitButton(BuildContext context) {
+    return Center(
+      child: ElevatedButton(
+        onPressed: () {},
+        style: ElevatedButton.styleFrom(
+          backgroundColor: Theme.of(context).cardColor, // Background color
+          minimumSize: const Size(80, 30), // Button size
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(4), // Rounded corners
+          ),
+          elevation: 2, // Shadow elevation
+          // Add more style properties if needed
+        ),
+        child: Text(
+          "Calculate",
+          style: TextStyle(
+            fontSize: 14,
+            fontWeight: FontWeight.w600,
+            color: Theme.of(context).textTheme.bodyMedium?.color,
+          ),
+        ),
+      ),
     );
   }
 }

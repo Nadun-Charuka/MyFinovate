@@ -8,9 +8,9 @@ class ScheduleWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        _buildDetails(context, "Loan due", "Today 9AM -10AM"),
-        _buildDetails(context, "Payement Cancelled", "Today 5AM -7AM"),
-        _buildDetails(context, "Interest debit", "Today 9PM -10PM"),
+        _buildDetails(context, "Loan due", "Today 9AM "),
+        _buildDetails(context, "Payement Cancelled", "Today 5AM"),
+        _buildDetails(context, "Interest debit", "Yesterday 10PM"),
       ],
     );
   }
